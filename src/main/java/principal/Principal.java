@@ -1,29 +1,32 @@
 package principal;
 
-import dao.ContaDAO;
-import dao.PerfilDAO;
-import entities.Conta;
-import entities.Perfil;
+import dao.ContaAcessoDAO;
+import dao.PessoaDAO;
+import entities.ContaAcesso;
+import entities.Pessoa;
 
+/**
+ * @author Pedro Alex
+ */
 public class Principal {
 	
 	public static void main(String[] args) {
 		
-		PerfilDAO perfilDAO = new PerfilDAO();
+		PessoaDAO pessoaDAO = new PessoaDAO();
 		
-		Perfil perfil = new Perfil();
-		perfil.setDescricao("Administrador");
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Pedro");
 		
-		perfilDAO.salvar(perfil);
-		perfil = perfilDAO.buscarPorId(1);
+		pessoaDAO.salvar(pessoa);
+		pessoa = pessoaDAO.buscarPorNome("Pedro");
 
-		ContaDAO funcionarioDAO = new ContaDAO();
+		ContaAcessoDAO contaAcessoDAO = new ContaAcessoDAO();
 		
-		Conta conta = new Conta();
-		conta.setLogin("piedroalex@gmail.com");
-		conta.setPerfil(perfil);
+		ContaAcesso contaAcesso = new ContaAcesso();
+		contaAcesso.setLogin("piedroalex@gmail.com");
+		contaAcesso.setPessoa(pessoa);
 		
-		funcionarioDAO.salvar(conta);
+		contaAcessoDAO.salvar(contaAcesso);
 		
 	}
 }

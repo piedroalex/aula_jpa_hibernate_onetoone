@@ -6,16 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * @author Pedro Alex
+ */
 @Entity
-public class Conta {
+public class ContaAcesso {
     
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
     private String login;
 
     @OneToOne
-    private Perfil perfil;
+    private Pessoa pessoa;
 
 	public Long getId() {
 		return id;
@@ -33,12 +36,12 @@ public class Conta {
 		this.login = login;
 	}
 
-	public Perfil getPerfil() {
-		return perfil;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
     
 }
